@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>Belgrade Lead Finder</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+</head>
+<body>
+<header class="top">
+  <div>
+    <p class="eyebrow">LOCAL BUSINESS PROSPECTING</p>
+    <h1>Belgrade Lead Finder</h1>
+    <p class="sub">Ищи заведения, которым может пригодиться сайт или веб-приложение.</p>
+  </div>
+  <span class="pill">Бесплатный MVP</span>
+</header>
+<main>
+  <section class="panel controls">
+    <div class="field">
+      <label for="place">Район или адрес</label>
+      <input id="place" value="Rakovica, Beograd, Serbia" autocomplete="street-address">
+    </div>
+    <div class="field">
+      <label for="radius">Радиус</label>
+      <select id="radius">
+        <option value="1000">1 км</option><option value="2000" selected>2 км</option>
+        <option value="3000">3 км</option><option value="5000">5 км</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="category">Тип заведения</label>
+      <select id="category">
+        <option value="food">Кафе и рестораны</option>
+        <option value="beauty">Барбершопы и салоны</option>
+        <option value="all">Все подходящие категории</option>
+        <option value="restaurant">Только рестораны</option>
+        <option value="cafe">Только кафе</option>
+        <option value="barber">Только барбершопы</option>
+      </select>
+    </div>
+    <label class="check"><input type="checkbox" id="noWebsite" checked> В первую очередь без сайта в OpenStreetMap</label>
+    <div class="actions">
+      <button id="searchBtn">Найти заведения</button>
+      <button id="locBtn" class="secondary">Использовать моё местоположение</button>
+    </div>
+    <p id="status" class="status" role="status">Выбери район и запусти поиск. Данные загружаются из OpenStreetMap.</p>
+  </section>
+
+  <section class="summary">
+    <div class="stat"><strong id="count">0</strong><span>найдено</span></div>
+    <div class="stat"><strong id="withPhone">0</strong><span>с телефоном</span></div>
+    <div class="stat"><strong id="withoutSite">0</strong><span>без сайта в OSM</span></div>
+  </section>
+
+  <section class="layout">
+    <div class="panel results">
+      <div class="resultHead"><h2>Потенциальные клиенты</h2><button id="exportBtn" class="small secondary" disabled>Экспорт CSV</button></div>
+      <p class="hint">Отсутствие сайта в OSM не доказывает, что у бизнеса нет сайта. Проверяй карточку перед предложением.</p>
+      <div id="leads" class="leadList"><div class="empty">Результаты появятся здесь.</div></div>
+    </div>
+    <div class="panel mapPanel">
+      <h2>Карта</h2>
+      <div id="map" aria-label="Карта найденных заведений"></div>
+      <p class="hint">Карта использует OpenStreetMap. Не запускай частые массовые запросы: публичные серверы имеют ограничения.</p>
+    </div>
+  </section>
+  <footer>
+    <p>Источник данных: OpenStreetMap contributors · © OpenStreetMap contributors. MVP не отправляет сообщения и не покупает данные.</p>
+    <p>Публичные контакты используй для уместных деловых предложений. Уважай просьбы не связываться повторно.</p>
+  </footer>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="app.js"></script>
+</body>
+</html>
